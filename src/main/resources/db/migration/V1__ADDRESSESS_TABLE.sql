@@ -1,4 +1,4 @@
-CREATE TABLE `addressess` (
+CREATE TABLE `addresses` (
     `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
     `address` VARCHAR(255) NOT NULL,
     `zip_code` VARCHAR(9) NOT NULL,

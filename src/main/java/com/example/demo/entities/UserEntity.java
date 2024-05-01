@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
 import java.util.HashSet;
@@ -28,4 +27,11 @@ public class UserEntity implements Serializable{
 
     @Column(nullable = false, length = 10, name = "birth_date")
     private String birthDate;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "users_adressess", joinColumns = @JoinColumn(name="adressess_id"),
+    inverseJoinColumns = @JoinColumn(name="users_id"))
+    Set<AdressessEntity> adressess = new HashSet<>();
+
+
 }
