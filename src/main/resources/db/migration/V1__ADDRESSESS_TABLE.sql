@@ -1,0 +1,8 @@
+CREATE TABLE `addressess` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
+    `address` VARCHAR(255) NOT NULL,
+    `zip_code` VARCHAR(9) NOT NULL,
+    `number` VARCHAR(8) NOT NULL,
+    `city` VARCHAR(255) NOT NULL,
+    `state` VARCHAR(2) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
