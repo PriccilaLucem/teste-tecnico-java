@@ -10,10 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
 import java.util.HashSet;
 import java.util.Set;
+
 
 @Entity
 @Table(name = "users")
@@ -29,9 +31,54 @@ public class UserEntity implements Serializable{
     private String birthDate;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "users_adressess", joinColumns = @JoinColumn(name="adressess_id"),
-    inverseJoinColumns = @JoinColumn(name="users_id"))
+    @JoinTable(name = "users_addresses", 
+        joinColumns = @JoinColumn(name="users_id"),
+        inverseJoinColumns = @JoinColumn(name="addresses_id"))
     Set<AdressessEntity> adressess = new HashSet<>();
+    
+    
+
+    public UserEntity(){
+
+    }
+    
+    public UserEntity(Long id, String fullName, String birthDate) {
+        this.id = id;
+        this.fullName = fullName;
+        this.birthDate = birthDate;
+    }
+    
+    @PrePersist
+    public void ValidateData(){
+        String regex = "^\\d{2}/\\d{2}/\\d{4}$";
+        if(!this.birthDate.matches(regex)){
+            throw new IllegalArgumentException("Invalid date format");
+        }
+    }
+    public Set<AdressessEntity> getAdressess() {
+        return adressess;
+    }
+    public String getBirthDate() {
+        return birthDate;
+    }
+    public String getFullName() {
+        return fullName;
+    }
+    public long getId() {
+        return id;
+    }
 
 
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+    public void setAdressess(Set<AdressessEntity> adressess) {
+        this.adressess = adressess;
+    }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 }

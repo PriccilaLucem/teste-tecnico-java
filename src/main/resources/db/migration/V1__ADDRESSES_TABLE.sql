@@ -1,6 +1,6 @@
 CREATE TABLE `addresses` (
     `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
-    `address` VARCHAR(255) NOT NULL,
+    `residence` VARCHAR(255) NOT NULL,
     `zip_code` VARCHAR(9) NOT NULL,
     `number` VARCHAR(8) NOT NULL,
     `city` VARCHAR(255) NOT NULL,

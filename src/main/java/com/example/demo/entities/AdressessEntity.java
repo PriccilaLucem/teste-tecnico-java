@@ -8,14 +8,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "addressess")
+@Table(name = "addresses")
 public class AdressessEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 255, name="adress")
-    private String address;
+    @Column(nullable = false, length = 255, name="residence")
+    private String residence;
     
     
     @Column(nullable = false, length = 9, name="zip_code")
