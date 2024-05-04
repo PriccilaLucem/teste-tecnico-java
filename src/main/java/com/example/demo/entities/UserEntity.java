@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.GenerationType;
@@ -36,7 +37,9 @@ public class UserEntity implements Serializable{
         inverseJoinColumns = @JoinColumn(name="addresses_id"))
     Set<AdressessEntity> adressess = new HashSet<>();
     
-    
+@   OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "favorite_address_id")
+    private AdressessEntity favoriteAddress;
 
     public UserEntity(){
 
@@ -67,16 +70,22 @@ public class UserEntity implements Serializable{
     public long getId() {
         return id;
     }
+    public AdressessEntity getFavoriteAddress() {
+        return favoriteAddress;
+    }
+    
 
-
+    public void setFavoriteAddress(AdressessEntity favoriteAddress) {
+        this.favoriteAddress = favoriteAddress;
+    }
     public void setId(long id) {
         this.id = id;
     }
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
-    public void setAdressess(Set<AdressessEntity> adressess) {
-        this.adressess = adressess;
+    public void setAdressess(AdressessEntity address) {
+        this.adressess.add(address);
     }
     public void setFullName(String fullName) {
         this.fullName = fullName;

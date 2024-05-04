@@ -30,4 +30,52 @@ public class AdressessEntity {
     @Column(nullable = false, length = 2, name="state")
     private String state;
 
+    public AdressessEntity(){}
+
+    public AdressessEntity(Long id, String residence, String zipCode, String number, String city, String state){
+        this.id = id;
+        this.residence = residence;
+        this.zipCode = zipCode;
+        this.number = number;
+        this.city = city;
+        this.state = state;
+    }
+
+    public String getCity() {
+        return city;
+    }
+    public long getId() {
+        return id;
+    }
+    public String getNumber() {
+        return number;
+    }
+    public String getResidence() {
+        return residence;
+    }
+    public String getState() {
+        return state;
+    }
+    public String getZipCode() {
+        return zipCode;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
+    public void setNumber(String number) {
+        this.number = number;
+    }
+    public void setResidence(String residence) {
+        this.residence = residence;
+    }
+    public void setState(String state) {
+        this.state = state;
+    }
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+    
 }
