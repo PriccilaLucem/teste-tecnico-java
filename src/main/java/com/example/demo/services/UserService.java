@@ -20,7 +20,7 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
     }
 
-    public List<UserEntity> getAlUsers(){
+    public List<UserEntity> getAllUsers(){
         return userRepository.findAll();
     }
 

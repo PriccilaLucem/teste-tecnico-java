@@ -14,27 +14,27 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "addresses")
-public class AdressessEntity {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    public class AdressessEntity {
+        
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
 
-    @Column(nullable = false, length = 255, name="residence")
-    private String residence;
-    
-    
-    @Column(nullable = false, length = 9, name="zip_code")
-    private String zipCode;
-    
-    @Column(nullable = false, length = 8, name="number")
-    private String number;
-    
-    @Column(nullable = false, length = 255, name="city")
-    private String city;
-    
-    @Column(nullable = false, length = 2, name="state")
-    private String state;
+        @Column(nullable = false, length = 255, name="residence")
+        private String residence;
+        
+        
+        @Column(nullable = false, length = 9, name="zip_code")
+        private String zipCode;
+        
+        @Column(nullable = false, length = 8, name="number")
+        private String number;
+        
+        @Column(nullable = false, length = 255, name="city")
+        private String city;
+        
+        @Column(nullable = false, length = 2, name="state")
+        private String state;
 
     public AdressessEntity(){}
 

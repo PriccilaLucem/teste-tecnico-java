@@ -47,7 +47,7 @@ public class UserController {
     })
     @GetMapping
     public  ResponseEntity<?> getAllUsers() {
-        return ResponseEntity.ok().body(userService.getAlUsers());
+        return ResponseEntity.ok().body(userService.getAllUsers());
     }
     
     @Operation(responses = {
