@@ -17,6 +17,8 @@ import jakarta.persistence.GenerationType;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.example.demo.exceptions.InvalidDataException;
+
 
 @Entity
 @Table(name = "users")
@@ -57,6 +59,10 @@ public class UserEntity implements Serializable{
         if(!this.birthDate.matches(regex)){
             throw new IllegalArgumentException("Invalid date format");
         }
+        if(this.birthDate == null || this.fullName == null){
+            throw new InvalidDataException("Birth date or Full name missing");
+        }
+
     }
     public Set<AdressessEntity> getAdressess() {
         return adressess;

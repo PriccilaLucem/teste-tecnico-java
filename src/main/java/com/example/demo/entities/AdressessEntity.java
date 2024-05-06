@@ -1,10 +1,13 @@
 package com.example.demo.entities;
 
+import com.example.demo.exceptions.InvalidDataException;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,6 +44,18 @@ public class AdressessEntity {
         this.state = state;
     }
 
+    @PrePersist
+    public void ValidateData(){
+        String regex = "^\\d{5}-\\d{3}$";
+        if(!this.zipCode.matches(regex)){
+            throw new IllegalArgumentException("Invalid zip-code");
+        }
+        if(this.city == null || this.number == null || this.residence == null || this.state == null){
+            throw new InvalidDataException("Birth date or Full name missing");
+        }
+    }
+
+    
     public String getCity() {
         return city;
     }

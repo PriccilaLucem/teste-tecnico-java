@@ -29,7 +29,7 @@ public class AddressController {
     UserService userService;
 
     @PostMapping("/{user_id}")
-    public ResponseEntity<?> postMethodName(HttpServletRequest request, @RequestBody AdressessEntity entity,
+    public ResponseEntity<?> postAddress(HttpServletRequest request, @RequestBody AdressessEntity entity,
     @PathVariable(value = "user_id") Long id) {
         
         URI uri = URI.create(request.getRequestURI());
