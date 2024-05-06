@@ -10,9 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
+
+
 @Entity
 @Table(name = "addresses")
 public class AdressessEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -51,7 +54,7 @@ public class AdressessEntity {
             throw new IllegalArgumentException("Invalid zip-code");
         }
         if(this.city == null || this.number == null || this.residence == null || this.state == null){
-            throw new InvalidDataException("Birth date or Full name missing");
+            throw new InvalidDataException("Data is missing");
         }
     }
 
